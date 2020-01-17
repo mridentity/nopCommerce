@@ -1,9 +1,9 @@
 ﻿@{
     Layout = "";
-    Html.AddCssFileParts("~/Plugins/ExternalAuth.Facebook/Content/facebookstyles.css");    
+    Html.AddCssFileParts("~/Plugins/ExternalAuth.ReadyConnect/Content/readyconnectstyles.css");    
 }
-<div class="facebook-login-block">
+<div class="readyconnect-login-block">
     <div class="buttons">
-        <a asp-controller="facebookauthentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="facebook-btn"></a>
+        <a asp-controller="readyconnectauthentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="readyconnect-btn"></a>
     </div>
 </div>
