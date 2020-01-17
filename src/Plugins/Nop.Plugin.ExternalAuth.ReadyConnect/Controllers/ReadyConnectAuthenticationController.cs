@@ -79,7 +79,7 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect.Controllers
                 ClientSecret = _readyConnectExternalAuthSettings.ClientSecret
             };
 
-            return View("~/Plugins/ExternalAuth.Facebook/Views/Configure.cshtml", model);
+            return View("~/Plugins/ExternalAuth.ReadyConnect/Views/Configure.cshtml", model);
         }
 
         [HttpPost]
@@ -99,7 +99,7 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect.Controllers
             _readyConnectExternalAuthSettings.ClientSecret = model.ClientSecret;
             _settingService.SaveSetting(_readyConnectExternalAuthSettings);
 
-            //clear Facebook authentication options cache
+            //clear ReadyConnect authentication options cache
             _optionsCache.TryRemove(ReadyConnectDefaults.AuthenticationScheme);
 
             _notificationService.SuccessNotification(_localizationService.GetResource("Admin.Plugins.Saved"));
@@ -112,12 +112,12 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect.Controllers
             var methodIsAvailable = _authenticationPluginManager
                 .IsPluginActive(ReadyConnectAuthenticationDefaults.SystemName, _workContext.CurrentCustomer, _storeContext.CurrentStore.Id);
             if (!methodIsAvailable)
-                throw new NopException("Facebook authentication module cannot be loaded");
+                throw new NopException("ReadyConnect authentication module cannot be loaded");
 
             if (string.IsNullOrEmpty(_readyConnectExternalAuthSettings.ClientKeyIdentifier) ||
                 string.IsNullOrEmpty(_readyConnectExternalAuthSettings.ClientSecret))
             {
-                throw new NopException("Facebook authentication module not configured");
+                throw new NopException("ReadyConnect authentication module not configured");
             }
 
             //configure login callback action
@@ -132,7 +132,7 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect.Controllers
 
         public async Task<IActionResult> LoginCallback(string returnUrl)
         {
-            //authenticate Facebook user
+            //authenticate ReadyConnect user
             var authenticateResult = await HttpContext.AuthenticateAsync(ReadyConnectDefaults.AuthenticationScheme);
             if (!authenticateResult.Succeeded || !authenticateResult.Principal.Claims.Any())
                 return RedirectToRoute("Login");
