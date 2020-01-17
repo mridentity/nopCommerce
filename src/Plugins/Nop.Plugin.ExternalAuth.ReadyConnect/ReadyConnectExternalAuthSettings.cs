@@ -7,7 +7,7 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect
     /// </summary>
     public class ReadyConnectExternalAuthSettings : ISettings
     {
-        public bool UseSandbox { get; set; } = true;
+        public bool UseSandbox { get; set; }
 
         /// <summary>
         /// Gets or sets OAuth2 client identifier
