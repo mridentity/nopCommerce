@@ -5,7 +5,7 @@
   "Version": "1.0",
   "SupportedVersions": [ "4.30" ],
   "Author": "c3w",
-  "DisplayOrder": 5,
+  "DisplayOrder": 6,
   "FileName": "Nop.Plugin.ExternalAuth.ReadyConnect.dll",
   "Description": "This plugin enables ReadyConnect authentication (login using ReadySignOn)"
 }
