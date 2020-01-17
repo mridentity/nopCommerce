@@ -75,6 +75,7 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect.Controllers
 
             var model = new ConfigurationModel
             {
+                UseSandbox = _readyConnectExternalAuthSettings.UseSandbox,
                 ClientId = _readyConnectExternalAuthSettings.ClientKeyIdentifier,
                 ClientSecret = _readyConnectExternalAuthSettings.ClientSecret
             };
