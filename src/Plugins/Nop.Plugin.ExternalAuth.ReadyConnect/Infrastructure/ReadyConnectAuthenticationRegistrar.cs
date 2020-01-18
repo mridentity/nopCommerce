@@ -28,6 +28,14 @@ namespace Nop.Plugin.ExternalAuth.ReadyConnect.Infrastructure
                 //store access and refresh tokens for the further usage
                 options.SaveTokens = true;
 
+                options.Scope.Add("rso_rid");   // rso_idp was the default RSO scope added prior to here in the ReadyConnect handler, if we don't remove it then both rso_idp and rso_rid will be supported.
+
+                options.Scope.Add("email");
+                options.Scope.Add("profile");
+                options.Scope.Add("roles");
+                options.Scope.Add("offline_access");
+
+
                 //set custom events handlers
                 options.Events = new ReadyConnectEvents
                 {
